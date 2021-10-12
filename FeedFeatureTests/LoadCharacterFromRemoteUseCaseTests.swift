@@ -17,6 +17,15 @@ class LoadCharacterFromRemoteUseCaseTests: XCTestCase {
     XCTAssertEqual(client.requestedURLs, [url])
   }
 
+  func test_load_deliversErrorOnClientError() {
+    let (sut, client) = makeSUT()
+    let clientError = NSError(domain: "clientError", code: 0)
+
+    expect(sut, completesWith: .failure(clientError), when: {
+      client.complete(with: clientError)
+    })
+  }
+
   // MARK: - Helpers
 
   private func makeSUT(with url: URL = URL(string: "http://any-url.com")!,
