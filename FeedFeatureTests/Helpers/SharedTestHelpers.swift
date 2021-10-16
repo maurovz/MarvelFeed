@@ -23,7 +23,7 @@ func makeCharacter(
 
   let comic1 = Comic(name: comicName, description: comicDescription, thumbnail: comicThumbnail)
   let model = Character(name: name, description: description, thumbnail: thumbnail, comics: [comic1])
-  
+
   return (model, json)
 }
 
