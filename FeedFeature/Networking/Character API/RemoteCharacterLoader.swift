@@ -15,7 +15,12 @@ public final class RemoteCharacterLoader: CharacterLoader {
     client.get(from: url) { result in
       switch result {
       case .success((let data, _)):
-        print(data)
+        guard let mappedCharacter = try? CharacterMapper.map(data: data) else {
+          completion(.failure(CharacterMapper.Error.invalidData))
+          return
+        }
+
+        completion(.success(mappedCharacter))
 
       case .failure(let error):
         completion(.failure(error))

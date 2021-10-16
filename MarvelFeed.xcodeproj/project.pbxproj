@@ -28,6 +28,7 @@
 		54A1D7F92715C0F90051A14A /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7F82715C0F90051A14A /* SharedTestHelpers.swift */; };
 		54A1D7FB2715C7790051A14A /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FA2715C7790051A14A /* HTTPClientSpy.swift */; };
 		54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */; };
+		54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FF2715D2430051A14A /* CharacterMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		54A1D7F82715C0F90051A14A /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		54A1D7FA2715C7790051A14A /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCharacterLoader.swift; sourceTree = "<group>"; };
+		54A1D7FF2715D2430051A14A /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */,
+				54A1D7FF2715D2430051A14A /* CharacterMapper.swift */,
 			);
 			path = "Character API";
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */,
 				5420367027138B7B006754B4 /* CharacterLoader.swift in Sources */,
 				5420366E271346B9006754B4 /* Character.swift in Sources */,
 				54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */,

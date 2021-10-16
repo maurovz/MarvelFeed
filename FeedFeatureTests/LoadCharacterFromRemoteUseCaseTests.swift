@@ -26,6 +26,31 @@ class LoadCharacterFromRemoteUseCaseTests: XCTestCase {
     })
   }
 
+  func test_load_deliversInvalidDataErrorOnSuccessfulRespondeWithInvalidData() {
+    let (sut, client) = makeSUT()
+
+    expect(sut, completesWith: .failure(CharacterMapper.Error.invalidData), when: {
+      client.complete(withStatusCode: 200, data: Data("invalid json".utf8))
+    })
+  }
+
+  func test_load_deliversCharacterOnClientSuccessfulResponse() {
+    let (sut, client) = makeSUT()
+    let character = makeCharacter(
+      name: "Super Marvel",
+      description: "Original Marvel Hero",
+      thumbnail: URL(string: "http://any-url.com")!,
+      comicName: "Comic Original",
+      comicDescription: "Original Description",
+      comicThumbnail: URL(string: "http://any-url.com")!
+    )
+
+    expect(sut, completesWith: .success(character.model), when: {
+      let json = makeJSON(character.json)
+      client.complete(withStatusCode: 200, data: json)
+    })
+  }
+
   // MARK: - Helpers
 
   private func makeSUT(with url: URL = URL(string: "http://any-url.com")!,

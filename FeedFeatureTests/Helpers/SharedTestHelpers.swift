@@ -4,19 +4,26 @@ import FeedFeature
 func makeCharacter(
   name: String,
   description: String,
-  thumbnail: URL) -> (model: Character, json: [String: Any]) {
+  thumbnail: URL,
+  comicName: String,
+  comicDescription: String,
+  comicThumbnail: URL
+  ) -> (model: Character, json: [String: Any]) {
 
   let json: [String: Any] = [
     "name": name,
     "description": description,
-    "thumbnail": thumbnail.absoluteString
+    "thumbnail": thumbnail.absoluteString,
+    "comics": [
+      ["name": comicName,
+      "description": comicDescription,
+      "thumbnail": comicThumbnail.absoluteString]
+    ]
   ]
 
-  let comic1 = Comic(name: "Akira", description: "Old school manga", thumbnail: URL(string: "")!)
-  let comic2 = Comic(name: "Akira2", description: "Old school manga", thumbnail: URL(string: "")!)
-
-  let model = Character(name: "Boss", description: "Boss of bosses", thumbnail: URL(string: "")!, comics: [comic1, comic2])
-
+  let comic1 = Comic(name: comicName, description: comicDescription, thumbnail: comicThumbnail)
+  let model = Character(name: name, description: description, thumbnail: thumbnail, comics: [comic1])
+  
   return (model, json)
 }
 
