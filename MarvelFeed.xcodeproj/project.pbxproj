@@ -30,6 +30,8 @@
 		54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */; };
 		54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FF2715D2430051A14A /* CharacterMapper.swift */; };
 		54CF8101271AF757002137EA /* CharacterMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF8100271AF757002137EA /* CharacterMapperTest.swift */; };
+		54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */; };
+		54DD6A14272D9ABD0037BE64 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A13272D9ABD0037BE64 /* UIView+Extensions.swift */; };
 		54F6543A271B17A9001085E5 /* CharacterFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F65439271B17A9001085E5 /* CharacterFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +118,8 @@
 		54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCharacterLoader.swift; sourceTree = "<group>"; };
 		54A1D7FF2715D2430051A14A /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 		54CF8100271AF757002137EA /* CharacterMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapperTest.swift; sourceTree = "<group>"; };
+		54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedView.swift; sourceTree = "<group>"; };
+		54DD6A13272D9ABD0037BE64 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		54F65439271B17A9001085E5 /* CharacterFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,6 +296,14 @@
 			path = "Character API";
 			sourceTree = "<group>";
 		};
+		54DD6A15272D9AC40037BE64 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				54DD6A13272D9ABD0037BE64 /* UIView+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		54F65435271B1712001085E5 /* CharacterFeed */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +325,8 @@
 		54F65437271B1728001085E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				54DD6A15272D9AC40037BE64 /* Helpers */,
+				54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -552,6 +566,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */,
+				54DD6A14272D9ABD0037BE64 /* UIView+Extensions.swift in Sources */,
 				5477FEA82713045C006EB236 /* CharacterFeedViewController.swift in Sources */,
 				5477FEA42713045C006EB236 /* AppDelegate.swift in Sources */,
 				54F6543A271B17A9001085E5 /* CharacterFeedViewModel.swift in Sources */,
