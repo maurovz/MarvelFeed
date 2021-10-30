@@ -2,7 +2,7 @@ import UIKit
 
 class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
-  private var characterView = UIView()
+  private var characterView = CharacterFeedView()
 
   public init(characterFeedViewModel: CharacterFeedViewModel) {
     self.characterFeedViewModel = characterFeedViewModel

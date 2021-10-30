@@ -1,6 +1,10 @@
 import UIKit
 
 final class CharacterFeedView: UIView {
+  private lazy var tableView: UITableView = {
+    UITableView()
+  }()
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     setUpView()
@@ -15,6 +19,12 @@ final class CharacterFeedView: UIView {
   }
 
   private func setUpView() {
-    backgroundColor = .black
+    addSubview(tableView)
+
+    tableView.anchor(top: topAnchor,
+                     left: leadingAnchor,
+                     bottom: bottomAnchor,
+                     right: trailingAnchor
+    )
   }
 }
