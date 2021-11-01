@@ -17,7 +17,9 @@ class CharacterFeedViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    characterView.tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: "cellId")
     characterView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self)
+
     fetchCharacters()
   }
 
@@ -43,8 +45,12 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 30))
-    cell.textLabel?.text = characters[indexPath.row].name
+    // swiftlint:disable force_cast
+
+    let cell = characterView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
+    cell.nameLabel.text = characters[indexPath.row].name
+    cell.descriptionLabel.text = characters[indexPath.row].description
+
     return cell
   }
 }

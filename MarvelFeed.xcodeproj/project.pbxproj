@@ -33,6 +33,7 @@
 		54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */; };
 		54DD6A14272D9ABD0037BE64 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A13272D9ABD0037BE64 /* UIView+Extensions.swift */; };
 		54DD6A17272EF2B80037BE64 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A16272EF2B80037BE64 /* CharacterViewModel.swift */; };
+		54DD6A19272FF6560037BE64 /* CharacterFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A18272FF6560037BE64 /* CharacterFeedCell.swift */; };
 		54F6543A271B17A9001085E5 /* CharacterFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F65439271B17A9001085E5 /* CharacterFeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedView.swift; sourceTree = "<group>"; };
 		54DD6A13272D9ABD0037BE64 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		54DD6A16272EF2B80037BE64 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		54DD6A18272FF6560037BE64 /* CharacterFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedCell.swift; sourceTree = "<group>"; };
 		54F65439271B17A9001085E5 /* CharacterFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -329,6 +331,7 @@
 			children = (
 				54DD6A15272D9AC40037BE64 /* Helpers */,
 				54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */,
+				54DD6A18272FF6560037BE64 /* CharacterFeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			files = (
 				54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */,
 				54DD6A14272D9ABD0037BE64 /* UIView+Extensions.swift in Sources */,
+				54DD6A19272FF6560037BE64 /* CharacterFeedCell.swift in Sources */,
 				5477FEA82713045C006EB236 /* CharacterFeedViewController.swift in Sources */,
 				5477FEA42713045C006EB236 /* AppDelegate.swift in Sources */,
 				54DD6A17272EF2B80037BE64 /* CharacterViewModel.swift in Sources */,

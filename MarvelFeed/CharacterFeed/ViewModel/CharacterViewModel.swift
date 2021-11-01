@@ -9,7 +9,7 @@ class CharacterViewModel {
   }()
 
   lazy var description: String = {
-    character.name
+    character.description
   }()
 
   init(character: Character) {
