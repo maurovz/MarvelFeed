@@ -1,6 +1,8 @@
 disabled_rules:
   - force_try
   - nesting
+  - function_parameter_count
+  - switch_case_alignment
 
 line_length:
   warning: 150

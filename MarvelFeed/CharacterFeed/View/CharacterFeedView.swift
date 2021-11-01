@@ -1,7 +1,7 @@
 import UIKit
 
 final class CharacterFeedView: UIView {
-  private lazy var tableView: UITableView = {
+  lazy var tableView: UITableView = {
     UITableView()
   }()
 
@@ -14,17 +14,13 @@ final class CharacterFeedView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(viewModel: CharacterFeedViewModel) {
-
+  func configure(viewModel: CharacterFeedViewModel, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    tableView.delegate = delegate
+    tableView.dataSource = dataSource
   }
 
   private func setUpView() {
     addSubview(tableView)
-
-    tableView.anchor(top: topAnchor,
-                     left: leadingAnchor,
-                     bottom: bottomAnchor,
-                     right: trailingAnchor
-    )
+    tableView.anchor(top: topAnchor, left: leadingAnchor, bottom: bottomAnchor, right: trailingAnchor)
   }
 }
