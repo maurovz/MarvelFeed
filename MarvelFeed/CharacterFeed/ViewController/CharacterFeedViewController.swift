@@ -1,9 +1,9 @@
 import UIKit
 
-class CharacterFeedViewController: UIViewController {
+final class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
+  private let characterView = CharacterFeedView()
   private var characters: [CharacterViewModel] = []
-  private var characterView = CharacterFeedView()
 
   public init(characterFeedViewModel: CharacterFeedViewModel) {
     self.characterFeedViewModel = characterFeedViewModel
@@ -54,6 +54,6 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("detail")
+    characterFeedViewModel.didSelect(characters[indexPath.row])
   }
 }

@@ -1,5 +1,6 @@
 import Foundation
 import FeedFeature
+import UIKit
 
 class CharacterViewModel {
   private let character: Character
@@ -10,6 +11,10 @@ class CharacterViewModel {
 
   lazy var description: String = {
     character.description
+  }()
+
+  lazy var thumbnail: UIImage? = {
+    UIImage(named: "heroTemp")
   }()
 
   init(character: Character) {
