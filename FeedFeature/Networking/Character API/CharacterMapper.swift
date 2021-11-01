@@ -4,38 +4,30 @@ public final class CharacterMapper {
   }
 
   private struct Root: Decodable {
-    private let results: [RemoteCharacter]
+    private let data: Result
 
-    private struct RemoteCharacter: Decodable {
-      private let name: String
-      private let description: String
-      private let thumbnail: URL
-      private let comics: [RemoteComic]
+    struct Result: Decodable {
+      let results: [RemoteCharacter]
 
-      private struct RemoteComic: Decodable {
-        let name: String
-        let description: String
-        let thumbnail: URL
-      }
+      struct RemoteCharacter: Decodable {
+        private let name: String
+        private let description: String
 
-      var character: Character {
-        let remoteComics = comics.map { Comic(name: $0.name, description: $0.description, thumbnail: $0.thumbnail) }
-
-        return Character(
-          name: name,
-          description: description,
-          thumbnail: thumbnail,
-          comics: remoteComics
-        )
+        var character: Character {
+          return Character(
+            name: name,
+            description: description
+          )
+        }
       }
     }
 
-    var toModel: Character? {
-      return results.first?.character
+    var toModel: [Character]? {
+      return data.results.map { $0.character }
     }
   }
 
-  public static func map(data: Data) throws -> Character {
+  public static func map(data: Data) throws -> [Character] {
     do {
       let root = try JSONDecoder().decode(Root.self, from: data)
       guard let mappedCharacter = root.toModel else {

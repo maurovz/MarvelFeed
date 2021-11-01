@@ -8,26 +8,19 @@ func makeCharacter(
   comicName: String,
   comicDescription: String,
   comicThumbnail: URL
-  ) -> (model: Character, json: [String: Any]) {
+  ) -> (model: [Character], json: [String: Any]) {
 
   let json: [String: Any] = [
     "name": name,
-    "description": description,
-    "thumbnail": thumbnail.absoluteString,
-    "comics": [
-      ["name": comicName,
-      "description": comicDescription,
-      "thumbnail": comicThumbnail.absoluteString]
-    ]
+    "description": description
   ]
 
-  let comic1 = Comic(name: comicName, description: comicDescription, thumbnail: comicThumbnail)
-  let model = Character(name: name, description: description, thumbnail: thumbnail, comics: [comic1])
+  let model = Character(name: name, description: description)
 
-  return (model, json)
+  return ([model], json)
 }
 
 func makeJSON(_ item: [String: Any]) -> Data {
-  let root = ["results": [item]]
+  let root = ["data": ["results": [item]]]
   return try! JSONSerialization.data(withJSONObject: root)
 }
