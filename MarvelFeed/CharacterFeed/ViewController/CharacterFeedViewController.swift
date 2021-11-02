@@ -17,7 +17,7 @@ final class CharacterFeedViewController: UIViewController {
     super.viewDidLoad()
 
     characterView.tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: "cellId")
-    characterView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self)
+    characterView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self, searchBarDelegate: self)
 
     fetchCharacters()
   }
@@ -29,9 +29,8 @@ final class CharacterFeedViewController: UIViewController {
   private func fetchCharacters() {
     characterFeedViewModel.fetch()
 
-    characterFeedViewModel.onFetch = { characters in
+    characterFeedViewModel.onFetch = { _ in
       DispatchQueue.main.async {
-        self.characterFeedViewModel.characters = characters
         self.characterView.tableView.reloadData()
       }
     }
@@ -40,13 +39,13 @@ final class CharacterFeedViewController: UIViewController {
 
 extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    characterFeedViewModel.characters.count
+    characterFeedViewModel.filteredCharacters.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // swiftlint:disable force_cast
     let cell = characterView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
-    let character = characterFeedViewModel.characters[indexPath.row]
+    let character = characterFeedViewModel.filteredCharacters[indexPath.row]
 
     cell.nameLabel.text = character.name
     cell.descriptionLabel.text = character.description
@@ -58,6 +57,33 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    characterFeedViewModel.didSelect(characterFeedViewModel.characters[indexPath.row])
+    characterFeedViewModel.didSelect(characterFeedViewModel.filteredCharacters[indexPath.row])
+  }
+}
+
+extension CharacterFeedViewController: UISearchBarDelegate {
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    searchBar.showsCancelButton = false
+  }
+
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = true
+  }
+
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    guard searchText != "" else {
+      characterFeedViewModel.resetFilter()
+      characterView.tableView.reloadData()
+      return
+    }
+
+    characterFeedViewModel.filterResults(value: searchText)
+    characterView.tableView.reloadData()
+  }
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    searchBar.showsCancelButton = false
   }
 }
