@@ -36,14 +36,7 @@ class LoadCharacterFromRemoteUseCaseTests: XCTestCase {
 
   func test_load_deliversCharacterOnClientSuccessfulResponse() {
     let (sut, client) = makeSUT()
-    let character = makeCharacter(
-      name: "Super Marvel",
-      description: "Original Marvel Hero",
-      thumbnail: URL(string: "http://any-url.com")!,
-      comicName: "Comic Original",
-      comicDescription: "Original Description",
-      comicThumbnail: URL(string: "http://any-url.com")!
-    )
+    let character = makeCharacter(name: "Hero Tester", description: "A testing hero", thumbnail: ".https")
 
     expect(sut, completesWith: .success(character.model), when: {
       let json = makeJSON(character.json)

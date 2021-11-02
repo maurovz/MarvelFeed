@@ -12,12 +12,19 @@ public final class CharacterMapper {
       struct RemoteCharacter: Decodable {
         private let name: String
         private let description: String
+        private let thumbnail: Thumbnail
 
         var character: Character {
           return Character(
             name: name,
-            description: description
+            description: description,
+            thumbnail: "\(thumbnail.path).\(thumbnail.extension)"
           )
+        }
+
+        struct Thumbnail: Decodable {
+          let path: String
+          let `extension`: String
         }
       }
     }

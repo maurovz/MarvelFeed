@@ -13,8 +13,8 @@ class CharacterViewModel {
     character.description
   }()
 
-  lazy var thumbnail: UIImage? = {
-    UIImage(named: "heroTemp")
+  lazy var thumbnail: String = {
+    character.thumbnail
   }()
 
   init(character: Character) {

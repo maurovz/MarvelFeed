@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		5477FF0927130541006EB236 /* FeedFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 5477FEF927130541006EB236 /* FeedFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5477FF0C27130541006EB236 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5477FEF727130541006EB236 /* FeedFeature.framework */; };
 		5477FF0D27130541006EB236 /* FeedFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5477FEF727130541006EB236 /* FeedFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		54910F2927314FE3003F26D6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 54910F2827314FE3003F26D6 /* Kingfisher */; };
 		54A1D7F92715C0F90051A14A /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7F82715C0F90051A14A /* SharedTestHelpers.swift */; };
 		54A1D7FB2715C7790051A14A /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FA2715C7790051A14A /* HTTPClientSpy.swift */; };
 		54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */; };
@@ -134,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54910F2927314FE3003F26D6 /* Kingfisher in Frameworks */,
 				5477FF0C27130541006EB236 /* FeedFeature.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +380,9 @@
 				5477FF0B27130541006EB236 /* PBXTargetDependency */,
 			);
 			name = MarvelFeed;
+			packageProductDependencies = (
+				54910F2827314FE3003F26D6 /* Kingfisher */,
+			);
 			productName = MarvelFeed;
 			productReference = 5477FEA02713045C006EB236 /* MarvelFeed.app */;
 			productType = "com.apple.product-type.application";
@@ -495,6 +500,9 @@
 				Base,
 			);
 			mainGroup = 5477FE972713045C006EB236;
+			packageReferences = (
+				54910F2727314FE3003F26D6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 5477FEA12713045C006EB236 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1053,6 +1061,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		54910F2727314FE3003F26D6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		54910F2827314FE3003F26D6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54910F2727314FE3003F26D6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5477FEAC2713045C006EB236 /* MarvelFeed.xcdatamodeld */ = {

@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class CharacterDetailView: UIView {
   var imageView: UIImageView = {
@@ -33,6 +34,9 @@ final class CharacterDetailView: UIView {
   func configure(viewModel: CharacterViewModel) {
     nameLabel.text = viewModel.name
     descriptionLabel.text = viewModel.description
+
+    // TODO: Create image downloader to avoid using dependency
+    imageView.kf.setImage(with: URL(string: viewModel.thumbnail))
   }
 
   private func setUpView() {
