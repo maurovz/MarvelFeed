@@ -30,10 +30,13 @@ final class CharacterDetailView: UIView {
     setUpView()
   }
 
+  func configure(viewModel: CharacterViewModel) {
+    nameLabel.text = viewModel.name
+    descriptionLabel.text = viewModel.description
+  }
+
   private func setUpView() {
     let stackView = makeVerticalStack(subviews: [imageView, nameLabel, descriptionLabel])
-    nameLabel.text = "Dave"
-    descriptionLabel.text = "init(coder:) has not been implemented init(coder:) has not been implemented"
 
     addSubview(stackView)
     imageView.heightAnchor.constraint(equalToConstant: frame.width).isActive = true

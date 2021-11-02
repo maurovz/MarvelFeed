@@ -3,6 +3,8 @@ import FeedFeature
 class CharacterFeedViewModel {
   private let loader: CharacterLoader
 
+  var characters: [CharacterViewModel] = []
+
   public init(loader: CharacterLoader, didSelect: @escaping (CharacterViewModel) -> Void?) {
     self.loader = loader
     self.didSelect = didSelect

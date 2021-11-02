@@ -16,4 +16,8 @@ final class CharacterDetailViewController: UIViewController {
   public override func loadView() {
     view = characterView
   }
+
+  override func viewDidLoad() {
+    characterView.configure(viewModel: viewModel)
+  }
 }
