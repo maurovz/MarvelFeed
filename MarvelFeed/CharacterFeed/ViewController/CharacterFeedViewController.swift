@@ -1,9 +1,8 @@
 import UIKit
 
-class CharacterFeedViewController: UIViewController {
+final class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
-  private var characters: [CharacterViewModel] = []
-  private var characterView = CharacterFeedView()
+  private let characterView = CharacterFeedView()
 
   public init(characterFeedViewModel: CharacterFeedViewModel) {
     self.characterFeedViewModel = characterFeedViewModel
@@ -32,7 +31,7 @@ class CharacterFeedViewController: UIViewController {
 
     characterFeedViewModel.onFetch = { characters in
       DispatchQueue.main.async {
-        self.characters = characters
+        self.characterFeedViewModel.characters = characters
         self.characterView.tableView.reloadData()
       }
     }
@@ -41,19 +40,19 @@ class CharacterFeedViewController: UIViewController {
 
 extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    characters.count
+    characterFeedViewModel.characters.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // swiftlint:disable force_cast
     let cell = characterView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
-    cell.nameLabel.text = characters[indexPath.row].name
-    cell.descriptionLabel.text = characters[indexPath.row].description
+    cell.nameLabel.text = characterFeedViewModel.characters[indexPath.row].name
+    cell.descriptionLabel.text = characterFeedViewModel.characters[indexPath.row].description
 
     return cell
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("detail")
+    characterFeedViewModel.didSelect(characterFeedViewModel.characters[indexPath.row])
   }
 }

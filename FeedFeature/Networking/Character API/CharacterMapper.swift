@@ -23,7 +23,7 @@ public final class CharacterMapper {
     }
 
     var toModel: [Character]? {
-      return data.results.map { $0.character }
+      return data.results.filter { $0.character.description != "" } .map { $0.character }
     }
   }
 

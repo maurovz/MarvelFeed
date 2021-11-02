@@ -3,11 +3,16 @@ import FeedFeature
 class CharacterFeedViewModel {
   private let loader: CharacterLoader
 
-  public init(loader: CharacterLoader) {
+  var characters: [CharacterViewModel] = []
+
+  public init(loader: CharacterLoader, didSelect: @escaping (CharacterViewModel) -> Void?) {
     self.loader = loader
+    self.didSelect = didSelect
   }
 
   public var onFetch: (([CharacterViewModel]) -> Void)?
+
+  public var didSelect: (CharacterViewModel) -> Void?
 
   public func fetch() {
     loader.load { [weak self] result in

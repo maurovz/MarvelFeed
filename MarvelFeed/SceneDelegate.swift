@@ -6,7 +6,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   private lazy var navigationController = UINavigationController(
     rootViewController: CharacterFeedViewController(
-      characterFeedViewModel: CharacterFeedViewModel(loader: getLoader())
+      characterFeedViewModel: CharacterFeedViewModel(loader: getLoader(), didSelect: goToDetailView)
     )
   )
 
@@ -16,6 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window = UIWindow(windowScene: scene)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
+  }
+
+  func goToDetailView(for viewModel: CharacterViewModel) {
+    let viewController = CharacterDetailViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
 
   func getLoader() -> RemoteCharacterLoader {
