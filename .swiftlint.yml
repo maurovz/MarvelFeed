@@ -3,6 +3,7 @@ disabled_rules:
   - nesting
   - function_parameter_count
   - switch_case_alignment
+  - todo
 
 line_length:
   warning: 150

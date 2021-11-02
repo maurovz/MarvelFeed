@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class CharacterFeedCell: UITableViewCell {
 
@@ -20,7 +21,7 @@ class CharacterFeedCell: UITableViewCell {
   }()
 
   var characterImageView: UIImageView = {
-    let imageView = UIImageView(image: UIImage(named: "heroTemp"))
+    let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
     imageView.layer.cornerRadius = 20

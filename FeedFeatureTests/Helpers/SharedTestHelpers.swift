@@ -4,18 +4,19 @@ import FeedFeature
 func makeCharacter(
   name: String,
   description: String,
-  thumbnail: URL,
-  comicName: String,
-  comicDescription: String,
-  comicThumbnail: URL
-  ) -> (model: [Character], json: [String: Any]) {
+  thumbnail: String
+) -> (model: [Character], json: [String: Any]) {
 
   let json: [String: Any] = [
     "name": name,
-    "description": description
+    "description": description,
+    "thumbnail": [
+      "path": "",
+      "extension": "https"
+    ]
   ]
 
-  let model = Character(name: name, description: description)
+  let model = Character(name: name, description: description, thumbnail: thumbnail)
 
   return ([model], json)
 }

@@ -46,8 +46,13 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // swiftlint:disable force_cast
     let cell = characterView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
-    cell.nameLabel.text = characterFeedViewModel.characters[indexPath.row].name
-    cell.descriptionLabel.text = characterFeedViewModel.characters[indexPath.row].description
+    let character = characterFeedViewModel.characters[indexPath.row]
+
+    cell.nameLabel.text = character.name
+    cell.descriptionLabel.text = character.description
+
+    let url = URL(string: character.thumbnail)
+    cell.characterImageView.kf.setImage(with: url)
 
     return cell
   }
