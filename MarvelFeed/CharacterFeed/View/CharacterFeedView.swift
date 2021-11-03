@@ -1,6 +1,11 @@
 import UIKit
 
 final class CharacterFeedView: UIView {
+  lazy var searchBar: UISearchBar = {
+    let searchBar = UISearchBar()
+    return searchBar
+  }()
+
   lazy var tableView: UITableView = {
     UITableView()
   }()
@@ -14,13 +19,23 @@ final class CharacterFeedView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(viewModel: CharacterFeedViewModel, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
-    tableView.delegate = delegate
-    tableView.dataSource = dataSource
-  }
+  func configure(
+    viewModel: CharacterFeedViewModel,
+    delegate: UITableViewDelegate,
+    dataSource: UITableViewDataSource,
+    searchBarDelegate: UISearchBarDelegate) {
+      tableView.delegate = delegate
+      tableView.dataSource = dataSource
+      searchBar.delegate = searchBarDelegate
+    }
 
   private func setUpView() {
+    backgroundColor = .white
+
+    addSubview(searchBar)
+    searchBar.anchor(top: layoutMarginsGuide.topAnchor, left: leadingAnchor, right: trailingAnchor)
+
     addSubview(tableView)
-    tableView.anchor(top: topAnchor, left: leadingAnchor, bottom: bottomAnchor, right: trailingAnchor)
+    tableView.anchor(top: searchBar.bottomAnchor, left: leadingAnchor, bottom: bottomAnchor, right: trailingAnchor)
   }
 }
