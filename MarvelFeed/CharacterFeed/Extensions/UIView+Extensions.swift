@@ -98,3 +98,12 @@ extension UIView {
            bottom: view.bottomAnchor, right: view.rightAnchor)
   }
 }
+
+extension UIView {
+  func addActivityIndicator(activityView: UIActivityIndicatorView) {
+    addSubview(activityView)
+
+    activityView.startAnimating()
+    activityView.center(inView: self)
+  }
+}

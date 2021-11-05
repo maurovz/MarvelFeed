@@ -1,9 +1,15 @@
 import UIKit
 
 final class CharacterFeedView: UIView {
+  lazy var coverImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.image = UIImage(named: "Cover")
+    imageView.contentMode = .scaleAspectFill
+    return imageView
+  }()
+
   lazy var searchBar: UISearchBar = {
-    let searchBar = UISearchBar()
-    return searchBar
+    UISearchBar()
   }()
 
   lazy var tableView: UITableView = {
@@ -12,7 +18,7 @@ final class CharacterFeedView: UIView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setUpView()
+    setupView()
   }
 
   required init?(coder: NSCoder) {
@@ -29,11 +35,14 @@ final class CharacterFeedView: UIView {
       searchBar.delegate = searchBarDelegate
     }
 
-  private func setUpView() {
+  private func setupView() {
     backgroundColor = .white
 
+    addSubview(coverImageView)
+    coverImageView.anchor(top: layoutMarginsGuide.topAnchor, left: leadingAnchor, right: trailingAnchor, height: 160)
+
     addSubview(searchBar)
-    searchBar.anchor(top: layoutMarginsGuide.topAnchor, left: leadingAnchor, right: trailingAnchor)
+    searchBar.anchor(top: coverImageView.bottomAnchor, left: leadingAnchor, right: trailingAnchor)
 
     addSubview(tableView)
     tableView.anchor(top: searchBar.bottomAnchor, left: leadingAnchor, bottom: bottomAnchor, right: trailingAnchor)
