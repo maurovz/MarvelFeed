@@ -28,7 +28,7 @@ final class CharacterDetailView: UIView {
   }()
 
   override func layoutSubviews() {
-    setUpView()
+    setupView()
   }
 
   func configure(viewModel: CharacterViewModel) {
@@ -39,7 +39,7 @@ final class CharacterDetailView: UIView {
     imageView.kf.setImage(with: URL(string: viewModel.thumbnail))
   }
 
-  private func setUpView() {
+  private func setupView() {
     let stackView = makeVerticalStack(subviews: [imageView, nameLabel, descriptionLabel])
 
     addSubview(stackView)

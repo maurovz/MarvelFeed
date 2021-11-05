@@ -3,6 +3,7 @@ import UIKit
 final class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
   private let characterView = CharacterFeedView()
+  private let activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 
   public init(characterFeedViewModel: CharacterFeedViewModel) {
     self.characterFeedViewModel = characterFeedViewModel
@@ -27,10 +28,13 @@ final class CharacterFeedViewController: UIViewController {
   }
 
   private func fetchCharacters() {
+    view.addActivityIndicator(activityView: activityView)
+
     characterFeedViewModel.fetch()
 
     characterFeedViewModel.onFetch = { _ in
       DispatchQueue.main.async {
+        self.activityView.removeFromSuperview()
         self.characterView.tableView.reloadData()
       }
     }
