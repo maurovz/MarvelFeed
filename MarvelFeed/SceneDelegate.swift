@@ -6,7 +6,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   private lazy var navigationController = UINavigationController(
     rootViewController: CharacterFeedViewController(
-      characterFeedViewModel: CharacterFeedViewModel(loader: getLoader(), didSelect: goToDetailView)
+      characterFeedViewModel: CharacterFeedViewModel(loader: getLoader(), didSelectAction: goToDetailView)
     )
   )
 

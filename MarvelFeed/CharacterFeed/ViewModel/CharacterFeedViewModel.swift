@@ -1,16 +1,24 @@
 import FeedFeature
 
-class CharacterFeedViewModel {
+protocol CharacterFeedProtocol: AnyObject {
+  func showError(message: String)
+  func didLoadData()
+}
+
+final class CharacterFeedViewModel {
+  typealias SelectionAction = (CharacterViewModel) -> Void?
+
   private let loader: CharacterLoader
   private var characters: [CharacterViewModel] = []
 
-  public var onFetch: (([CharacterViewModel]) -> Void)?
-  public var didSelect: (CharacterViewModel) -> Void?
+  public weak var delegate: CharacterFeedProtocol?
+
+  public var didSelectAction: SelectionAction
   public var filteredCharacters: [CharacterViewModel] = []
 
-  public init(loader: CharacterLoader, didSelect: @escaping (CharacterViewModel) -> Void?) {
+  public init(loader: CharacterLoader, didSelectAction: @escaping SelectionAction) {
     self.loader = loader
-    self.didSelect = didSelect
+    self.didSelectAction = didSelectAction
   }
 
   public func fetch() {
@@ -19,13 +27,11 @@ class CharacterFeedViewModel {
 
       switch result {
         case .success(let characters):
-          let mappedCharacters = characters.map { CharacterViewModel(character: $0) }
-          self.onFetch?(mappedCharacters)
-          self.characters = mappedCharacters
-          self.filteredCharacters = mappedCharacters
+          self.setCharacters(characters)
+          self.delegate?.didLoadData()
 
         case .failure(let error):
-          print("Networking Error!! \(error)")
+          self.delegate?.showError(message: error.localizedDescription)
       }
     }
   }
@@ -36,5 +42,11 @@ class CharacterFeedViewModel {
 
   public func resetFilter() {
     filteredCharacters =  characters
+  }
+
+  private func setCharacters(_ value: [Character]) {
+    let mappedCharacters = value.map { CharacterViewModel(character: $0) }
+    characters = mappedCharacters
+    filteredCharacters = characters
   }
 }
