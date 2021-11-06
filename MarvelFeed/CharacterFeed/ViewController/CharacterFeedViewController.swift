@@ -2,8 +2,15 @@ import UIKit
 
 final class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
-  private let characterView = CharacterFeedView()
+  private let characterFeedView = CharacterFeedView()
   private let activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+
+  private lazy var retryButton: UIButton = {
+    let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+    button.setTitle("Retry", for: .normal)
+    button.setTitleColor(.black, for: .normal)
+    return button
+  }()
 
   public init(characterFeedViewModel: CharacterFeedViewModel) {
     self.characterFeedViewModel = characterFeedViewModel
@@ -16,28 +23,39 @@ final class CharacterFeedViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupFeed()
+  }
 
-    characterView.tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: "cellId")
-    characterView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self, searchBarDelegate: self)
+  public override func loadView() {
+    view = characterFeedView
+  }
+}
+
+// MARK: Private Methods
+
+private extension CharacterFeedViewController {
+  func setupFeed() {
+    characterFeedView.tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: "cellId")
+    characterFeedView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self, searchBarDelegate: self)
+    characterFeedViewModel.delegate = self
 
     fetchCharacters()
   }
 
-  public override func loadView() {
-    view = characterView
+  func fetchCharacters() {
+    view.addActivityIndicator(activityView: activityView)
+    characterFeedViewModel.fetch()
   }
 
-  private func fetchCharacters() {
-    view.addActivityIndicator(activityView: activityView)
+  func showRetryButton(_: UIAlertAction) {
+    retryButton.addTarget(self, action: #selector(reloadFeed), for: .touchUpInside)
+    view.addSubview(retryButton)
+    retryButton.center(inView: view)
+  }
 
-    characterFeedViewModel.fetch()
-
-    characterFeedViewModel.onFetch = { _ in
-      DispatchQueue.main.async {
-        self.activityView.removeFromSuperview()
-        self.characterView.tableView.reloadData()
-      }
-    }
+  @objc func reloadFeed() {
+    retryButton.removeFromSuperview()
+    setupFeed()
   }
 }
 
@@ -48,7 +66,7 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // swiftlint:disable force_cast
-    let cell = characterView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
+    let cell = characterFeedView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
     let character = characterFeedViewModel.filteredCharacters[indexPath.row]
 
     cell.nameLabel.text = character.name
@@ -61,7 +79,7 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    characterFeedViewModel.didSelect(characterFeedViewModel.filteredCharacters[indexPath.row])
+    characterFeedViewModel.didSelectAction(characterFeedViewModel.filteredCharacters[indexPath.row])
   }
 }
 
@@ -78,16 +96,32 @@ extension CharacterFeedViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     guard searchText != "" else {
       characterFeedViewModel.resetFilter()
-      characterView.tableView.reloadData()
+      characterFeedView.tableView.reloadData()
       return
     }
 
     characterFeedViewModel.filterResults(value: searchText)
-    characterView.tableView.reloadData()
+    characterFeedView.tableView.reloadData()
   }
 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     searchBar.showsCancelButton = false
+  }
+}
+
+extension CharacterFeedViewController: CharacterFeedProtocol {
+  func showError(message: String) {
+    DispatchQueue.main.async {
+      self.activityView.removeFromSuperview()
+      self.showAlert(title: "Localized Title", message: message, handler: self.showRetryButton)
+    }
+  }
+
+  func didLoadData() {
+    DispatchQueue.main.async {
+      self.activityView.removeFromSuperview()
+      self.characterFeedView.tableView.reloadData()
+    }
   }
 }
