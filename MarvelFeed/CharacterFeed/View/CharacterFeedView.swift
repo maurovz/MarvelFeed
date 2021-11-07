@@ -32,6 +32,7 @@ final class CharacterFeedView: UIView {
     searchBarDelegate: UISearchBarDelegate) {
       tableView.delegate = delegate
       tableView.dataSource = dataSource
+      tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: CharacterFeedCell.id)
       searchBar.delegate = searchBarDelegate
     }
 

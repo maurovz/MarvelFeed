@@ -7,7 +7,7 @@ final class CharacterFeedViewController: UIViewController {
 
   private lazy var retryButton: UIButton = {
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-    button.setTitle("Retry", for: .normal)
+    button.setTitle(LocalizationKeys.Retry.localized, for: .normal)
     button.setTitleColor(.black, for: .normal)
     return button
   }()
@@ -35,10 +35,8 @@ final class CharacterFeedViewController: UIViewController {
 
 private extension CharacterFeedViewController {
   func setupFeed() {
-    characterFeedView.tableView.register(CharacterFeedCell.self, forCellReuseIdentifier: "cellId")
     characterFeedView.configure(viewModel: characterFeedViewModel, delegate: self, dataSource: self, searchBarDelegate: self)
     characterFeedViewModel.delegate = self
-
     fetchCharacters()
   }
 
@@ -66,14 +64,12 @@ extension CharacterFeedViewController: UITableViewDelegate, UITableViewDataSourc
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // swiftlint:disable force_cast
-    let cell = characterFeedView.tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! CharacterFeedCell
+    let cell = characterFeedView.tableView.dequeueReusableCell(withIdentifier: CharacterFeedCell.id, for: indexPath) as! CharacterFeedCell
     let character = characterFeedViewModel.filteredCharacters[indexPath.row]
 
     cell.nameLabel.text = character.name
     cell.descriptionLabel.text = character.description
-
-    let url = URL(string: character.thumbnail)
-    cell.characterImageView.kf.setImage(with: url)
+    cell.characterImageView.kf.setImage(with: URL(string: character.thumbnail))
 
     return cell
   }
@@ -94,7 +90,7 @@ extension CharacterFeedViewController: UISearchBarDelegate {
   }
 
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    guard searchText != "" else {
+    guard !searchText.isEmpty else {
       characterFeedViewModel.resetFilter()
       characterFeedView.tableView.reloadData()
       return
@@ -114,7 +110,7 @@ extension CharacterFeedViewController: CharacterFeedProtocol {
   func showError(message: String) {
     DispatchQueue.main.async {
       self.activityView.removeFromSuperview()
-      self.showAlert(title: "Localized Title", message: message, handler: self.showRetryButton)
+      self.showAlert(title: LocalizationKeys.ConnectionProblem.localized, message: message, handler: self.showRetryButton)
     }
   }
 
