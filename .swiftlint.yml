@@ -4,6 +4,7 @@ disabled_rules:
   - function_parameter_count
   - switch_case_alignment
   - todo
+  - identifier_name
 
 line_length:
   warning: 150

@@ -2,6 +2,8 @@ import UIKit
 import Kingfisher
 
 final class CharacterFeedCell: UITableViewCell {
+  static let id: String = .init(describing: self)
+
   var nameLabel: UILabel = {
     let label = UILabel()
     label.textColor = .black
