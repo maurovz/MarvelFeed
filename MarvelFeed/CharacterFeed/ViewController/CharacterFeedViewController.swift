@@ -3,7 +3,7 @@ import UIKit
 final class CharacterFeedViewController: UIViewController {
   private let characterFeedViewModel: CharacterFeedViewModel
   private let characterFeedView = CharacterFeedView()
-  private let activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+  let activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 
   private lazy var retryButton: UIButton = {
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
