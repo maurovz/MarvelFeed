@@ -3,7 +3,7 @@ import Kingfisher
 
 final class CharacterDetailView: UIView {
   var imageView: UIImageView = {
-    let imageView = UIImageView(image: UIImage(named: "heroTemp"))
+    let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
     imageView.layer.cornerRadius = 20
@@ -34,6 +34,13 @@ final class CharacterDetailView: UIView {
   func configure(viewModel: CharacterViewModel) {
     nameLabel.text = viewModel.name
     descriptionLabel.text = viewModel.description
+
+    guard !viewModel.thumbnail.isEmpty else {
+      if let image = UIImage(named: "NoAvatar") {
+        imageView.image = image
+      }
+      return
+    }
 
     // TODO: Create image downloader to avoid using dependency
     imageView.kf.setImage(with: URL(string: viewModel.thumbnail))

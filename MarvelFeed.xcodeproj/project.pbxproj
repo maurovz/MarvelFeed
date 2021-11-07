@@ -34,6 +34,7 @@
 		54A1D7FB2715C7790051A14A /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FA2715C7790051A14A /* HTTPClientSpy.swift */; };
 		54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */; };
 		54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FF2715D2430051A14A /* CharacterMapper.swift */; };
+		54ADACC827381F0400955E00 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 54ADACC727381F0400955E00 /* SnapshotTesting */; };
 		54CF8101271AF757002137EA /* CharacterMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF8100271AF757002137EA /* CharacterMapperTest.swift */; };
 		54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */; };
 		54DD6A17272EF2B80037BE64 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A16272EF2B80037BE64 /* CharacterViewModel.swift */; };
@@ -154,6 +155,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54ADACC827381F0400955E00 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +425,9 @@
 				5477FEBB2713045C006EB236 /* PBXTargetDependency */,
 			);
 			name = MarvelFeedTests;
+			packageProductDependencies = (
+				54ADACC727381F0400955E00 /* SnapshotTesting */,
+			);
 			productName = MarvelFeedTests;
 			productReference = 5477FEB92713045C006EB236 /* MarvelFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -514,7 +519,7 @@
 				};
 			};
 			buildConfigurationList = 5477FE9B2713045C006EB236 /* Build configuration list for PBXProject "MarvelFeed" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -525,6 +530,7 @@
 			mainGroup = 5477FE972713045C006EB236;
 			packageReferences = (
 				54910F2727314FE3003F26D6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				54ADACC627381F0400955E00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 5477FEA12713045C006EB236 /* Products */;
 			projectDirPath = "";
@@ -1110,6 +1116,14 @@
 				kind = branch;
 			};
 		};
+		54ADACC627381F0400955E00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1117,6 +1131,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 54910F2727314FE3003F26D6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		54ADACC727381F0400955E00 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54ADACC627381F0400955E00 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 
