@@ -9,4 +9,9 @@ struct Constants {
   private static let params = "limit=50&"
 
   static let url = URL(string: "\(baseURL)\(params)&ts=\(timestamp)&apikey=\(publicKey)&hash=\(hash)")!
+
+  static let feedBackgroundColor = "FeedBackground"
+  static let coverImageName = "Cover"
+  static let feedTextColor = "FeedText"
+  static let noAvatarImage = "NoAvatar"
 }
