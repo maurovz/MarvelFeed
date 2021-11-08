@@ -31,6 +31,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let baseURL = "https://gateway.marvel.com:443/v1/public/characters?"
     let url = URL(string: "\(baseURL)&ts=\(timestamp)&apikey=\(publicKey)&hash=cb0c0b92b46b5a48de738ca8d92470e6")!
 
-    return RemoteCharacterLoader(url: url, client: client)
+    return RemoteCharacterLoader(url: url, client: client, cache: CoreDataServices())
   }
 }

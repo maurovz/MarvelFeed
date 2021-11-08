@@ -35,6 +35,10 @@
 		54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */; };
 		54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A1D7FF2715D2430051A14A /* CharacterMapper.swift */; };
 		54ADACC827381F0400955E00 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 54ADACC727381F0400955E00 /* SnapshotTesting */; };
+		54ADADDF27397E1500955E00 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ADADDE27397E1500955E00 /* CoreDataStack.swift */; };
+		54ADADE12739814800955E00 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ADADE02739814800955E00 /* CoreDataService.swift */; };
+		54ADADEB27399B2100955E00 /* CharacterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54ADADE927399B2100955E00 /* CharacterModel.xcdatamodeld */; };
+		54ADADEC2739A05F00955E00 /* CharacterModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54ADADE927399B2100955E00 /* CharacterModel.xcdatamodeld */; };
 		54CF8101271AF757002137EA /* CharacterMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CF8100271AF757002137EA /* CharacterMapperTest.swift */; };
 		54DD6A12272D9A980037BE64 /* CharacterFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */; };
 		54DD6A17272EF2B80037BE64 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DD6A16272EF2B80037BE64 /* CharacterViewModel.swift */; };
@@ -132,6 +136,9 @@
 		54A1D7FA2715C7790051A14A /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		54A1D7FD2715C9030051A14A /* RemoteCharacterLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCharacterLoader.swift; sourceTree = "<group>"; };
 		54A1D7FF2715D2430051A14A /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
+		54ADADDE27397E1500955E00 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		54ADADE02739814800955E00 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		54ADADEA27399B2100955E00 /* CharacterModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CharacterModel.xcdatamodel; sourceTree = "<group>"; };
 		54CF8100271AF757002137EA /* CharacterMapperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapperTest.swift; sourceTree = "<group>"; };
 		54DD6A11272D9A980037BE64 /* CharacterFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedView.swift; sourceTree = "<group>"; };
 		54DD6A16272EF2B80037BE64 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
@@ -289,7 +296,9 @@
 			children = (
 				5420366C2713466F006754B4 /* Character Feature */,
 				54203661271340C9006754B4 /* Networking */,
+				54ADADDC27397D7D00955E00 /* Cache */,
 				5477FEF927130541006EB236 /* FeedFeature.h */,
+				54ADADE927399B2100955E00 /* CharacterModel.xcdatamodeld */,
 				5477FEFA27130541006EB236 /* Info.plist */,
 			);
 			path = FeedFeature;
@@ -332,6 +341,23 @@
 				54A1D7FF2715D2430051A14A /* CharacterMapper.swift */,
 			);
 			path = "Character API";
+			sourceTree = "<group>";
+		};
+		54ADADDC27397D7D00955E00 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				54ADADDD27397D8B00955E00 /* Infra */,
+				54ADADE02739814800955E00 /* CoreDataService.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		54ADADDD27397D8B00955E00 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				54ADADDE27397E1500955E00 /* CoreDataStack.swift */,
+			);
+			path = Infra;
 			sourceTree = "<group>";
 		};
 		54F65435271B1712001085E5 /* CharacterFeed */ = {
@@ -622,6 +648,7 @@
 				5477FEA42713045C006EB236 /* AppDelegate.swift in Sources */,
 				54DD6A1E2730601B0037BE64 /* CharacterDetailViewController.swift in Sources */,
 				54DD6A17272EF2B80037BE64 /* CharacterViewModel.swift in Sources */,
+				54ADADEC2739A05F00955E00 /* CharacterModel.xcdatamodeld in Sources */,
 				54F6543A271B17A9001085E5 /* CharacterFeedViewModel.swift in Sources */,
 				5477FEAE2713045C006EB236 /* MarvelFeed.xcdatamodeld in Sources */,
 				5477FEA62713045C006EB236 /* SceneDelegate.swift in Sources */,
@@ -649,11 +676,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54ADADDF27397E1500955E00 /* CoreDataStack.swift in Sources */,
 				54A1D8002715D2430051A14A /* CharacterMapper.swift in Sources */,
 				5420367027138B7B006754B4 /* CharacterLoader.swift in Sources */,
 				5420366E271346B9006754B4 /* Character.swift in Sources */,
+				54ADADE12739814800955E00 /* CoreDataService.swift in Sources */,
 				54A1D7FE2715C9030051A14A /* RemoteCharacterLoader.swift in Sources */,
 				542036682713418F006754B4 /* HTTPClient.swift in Sources */,
+				54ADADEB27399B2100955E00 /* CharacterModel.xcdatamodeld in Sources */,
 				5420366527134141006754B4 /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1147,6 +1177,16 @@
 			);
 			currentVersion = 5477FEAD2713045C006EB236 /* MarvelFeed.xcdatamodel */;
 			path = MarvelFeed.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		54ADADE927399B2100955E00 /* CharacterModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				54ADADEA27399B2100955E00 /* CharacterModel.xcdatamodel */,
+			);
+			currentVersion = 54ADADEA27399B2100955E00 /* CharacterModel.xcdatamodel */;
+			path = CharacterModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

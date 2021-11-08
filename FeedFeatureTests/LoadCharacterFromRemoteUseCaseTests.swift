@@ -50,7 +50,10 @@ class LoadCharacterFromRemoteUseCaseTests: XCTestCase {
                        file: StaticString = #file,
                        line: UInt = #line) -> (sut: RemoteCharacterLoader, client: HTTPClientSpy) {
     let client = HTTPClientSpy()
-    let sut = RemoteCharacterLoader(url: url, client: client)
+    let cache = CoreDataServices()
+    _ = cache.deleteEntityFromCoreData(entity: "CharacterDescription")
+
+    let sut = RemoteCharacterLoader(url: url, client: client, cache: cache)
 
     return (sut, client)
   }
