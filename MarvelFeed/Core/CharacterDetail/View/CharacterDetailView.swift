@@ -12,7 +12,7 @@ final class CharacterDetailView: UIView {
 
   var nameLabel: UILabel = {
     let label = UILabel()
-    label.textColor = UIColor(named: "FeedText")
+    label.textColor = UIColor(named: Constants.feedTextColor)
     label.font = UIFont.boldSystemFont(ofSize: 24)
     label.textAlignment = .left
     return label
@@ -20,7 +20,7 @@ final class CharacterDetailView: UIView {
 
   var descriptionLabel: UILabel = {
     let label = UILabel()
-    label.textColor = UIColor(named: "FeedText")
+    label.textColor = UIColor(named: Constants.feedTextColor)
     label.font = UIFont.boldSystemFont(ofSize: 17)
     label.textAlignment = .left
     label.numberOfLines = 0
@@ -36,7 +36,7 @@ final class CharacterDetailView: UIView {
     descriptionLabel.text = viewModel.description
 
     guard !viewModel.thumbnail.isEmpty else {
-      if let image = UIImage(named: "NoAvatar") {
+      if let image = UIImage(named: Constants.noAvatarImage) {
         imageView.image = image
       }
       return
@@ -60,7 +60,7 @@ final class CharacterDetailView: UIView {
       paddingRight: 20
     )
 
-    backgroundColor = UIColor(named: "FeedBackground")
+    backgroundColor = UIColor(named: Constants.feedBackgroundColor)
   }
 
   private func makeVerticalStack(subviews: [UIView]) -> UIStackView {

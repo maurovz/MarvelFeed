@@ -3,7 +3,7 @@ import UIKit
 final class CharacterFeedView: UIView {
   lazy var coverImageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.image = UIImage(named: "Cover")
+    imageView.image = UIImage(named: Constants.coverImageName)
     imageView.contentMode = .scaleAspectFill
     return imageView
   }()
@@ -37,7 +37,7 @@ final class CharacterFeedView: UIView {
     }
 
   private func setupView() {
-    backgroundColor = UIColor(named: "FeedBackground")
+    backgroundColor = UIColor(named: Constants.feedBackgroundColor)
 
     addSubview(coverImageView)
     coverImageView.anchor(top: layoutMarginsGuide.topAnchor, left: leadingAnchor, right: trailingAnchor, height: 160)

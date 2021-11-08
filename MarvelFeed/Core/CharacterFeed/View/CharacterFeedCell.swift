@@ -6,7 +6,7 @@ final class CharacterFeedCell: UITableViewCell {
 
   var nameLabel: UILabel = {
     let label = UILabel()
-    label.textColor = UIColor(named: "FeedText")
+    label.textColor = UIColor(named: Constants.feedTextColor)
     label.font = UIFont.boldSystemFont(ofSize: 17)
     label.textAlignment = .left
     return label
@@ -14,7 +14,7 @@ final class CharacterFeedCell: UITableViewCell {
 
   var descriptionLabel: UILabel = {
     let label = UILabel()
-    label.textColor = UIColor(named: "FeedText")
+    label.textColor = UIColor(named: Constants.feedTextColor)
     label.font = UIFont.systemFont(ofSize: 14)
     label.textAlignment = .left
     label.numberOfLines = 0
@@ -32,7 +32,7 @@ final class CharacterFeedCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    backgroundColor = UIColor(named: "FeedBackground")
+    backgroundColor = UIColor(named: Constants.feedBackgroundColor)
 
     let leftStackView = makeVerticalStack(subviews: [nameLabel, descriptionLabel])
     let horizontalStackView = makeHorizontalStack(subviews: [leftStackView, characterImageView])
