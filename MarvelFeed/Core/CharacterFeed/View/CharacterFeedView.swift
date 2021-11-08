@@ -37,7 +37,7 @@ final class CharacterFeedView: UIView {
     }
 
   private func setupView() {
-    backgroundColor = .white
+    backgroundColor = UIColor(named: "FeedBackground")
 
     addSubview(coverImageView)
     coverImageView.anchor(top: layoutMarginsGuide.topAnchor, left: leadingAnchor, right: trailingAnchor, height: 160)
