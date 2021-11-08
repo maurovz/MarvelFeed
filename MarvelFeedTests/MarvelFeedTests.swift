@@ -7,7 +7,8 @@ import SnapshotTesting
 class MarvelFeedSnapshotTests: XCTestCase {
 
   /*
-   // NOTE: Test fails on Github Action flow.. Might need to switch to Travis
+   // NOTE: Test only fails on Github Action flow.. Might need to switch to Travis
+
   func test_characterFeedView_with_snapshot() {
     let viewModel = CharacterFeedViewModel(loader: DummyCharacterLoader(), didSelectAction: { _ in })
     let viewController = CharacterFeedViewController(characterFeedViewModel: viewModel)
