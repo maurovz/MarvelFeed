@@ -11,7 +11,7 @@ App is divided in two targets:
 
 ## Tests
 
-![](/)
+![](/tests.png)
 
 ## External libraries
 
@@ -25,7 +25,7 @@ Snapshots were recorded using **Xcode Version 13** and **iPhone 12** simulator. 
 
 Light Mode             |  Dark Mode
 :-------------------------:|:-------------------------:
-![]()  |  ![]()
+![](/light.png)  |  ![](/dark.png)
 ## Marvel Feed App Architecture
 
 ![imagen](/architecture.png)
